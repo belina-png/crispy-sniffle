@@ -1,0 +1,71 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from pylab import rcParams
+#sklearn 
+import sklearn
+from sklearn.cluster import KMeans 
+from sklearn.preprocessing import scale # for scaling the data
+import sklearn.metrics as sm # for evaluating the model
+from sklearn import datasets
+from sklearn.metrics import confusion_matrix,classification_report
+
+data = load_iris()
+df = pd.DataFrame(data.data, columns=data.feature_names)
+df
+
+# find the columns of the dataset
+df.columns
+# 1. Tap a variable name features
+# 2. store the 4 feature value ( i.e columns name) inside it 
+features = ['sepal length (cm)', 'sepal width (cm)']
+
+# 3. Create features matrix
+x = df.loc[:, features].values
+x
+
+# Apply Standardization to features matrix X
+x = df.loc[:, features].values
+x
+
+x = StandardScaler().fit_transform(x)
+x
+
+pd.DataFrame(x, columns = features).plot.scatter('sepal length (cm)', 'sepal width (cm)' )
+
+# Make an instance of KMeans with 3 clusters
+kmeans = KMeans(n_clusters=3, random_state=1)
+kmeans.fit(x)
+
+# Get labels and cluster centroids
+labels = kmeans.labels_
+centers = kmeans.cluster_centers_
+
+x = pd.DataFrame(x, columns = features)
+x
+
+colormap = np.array(['black', 'r', 'lightgreen'])
+
+plt.scatter(x['sepal length (cm)'], x['sepal width (cm)'], c=colormap[labels])
+plt.scatter(centroids[:,0], centroids[:,1], s = 300, alpha=0.5, marker = 'x', c = 'k')
+
+plt.xlabel('sepal length (cm)')
+plt.ylabel('sepal width (cm)');
+
+
+plt.figure(figsize=(10,4))
+
+plt.subplot(1, 2, 1)
+plt.scatter(x['sepal length (cm)'], x['sepal width (cm)'], c=colormap[labels])
+plt.xlabel('sepal length (cm)')
+plt.ylabel('sepal width (cm)');
+plt.title('K-Means Clustering Classifcation (k = 3)')
+ 
+plt.subplot(1, 2, 2)
+plt.scatter(x['sepal length (cm)'], x['sepal width (cm)'], c=colormap[y], s=50)
+plt.xlabel('sepal length (cm)')
+plt.ylabel('sepal width (cm)');
+plt.title('Iris Species - Before K Means Classificaion")')
+
+plt.tight_layout()
+plt.show()
