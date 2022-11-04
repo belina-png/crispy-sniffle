@@ -43,6 +43,9 @@ Steps:
 
 1. Import library 
 
+<details><summary> code </summary>
+<p>
+  
 ````
 %matplotlib inline
 
@@ -56,10 +59,14 @@ from sklearn.preprocessing import StandardScaler
 
 from sklearn.cluster import KMeans
 ````
-
+</p>
+</details>
 
 2. Load iris dataset from sklearn
 
+<details><summary> code </summary>
+<p>
+  
 ````
 #### This is 150 rows × 4 columns for the whole dataset 
 #### With 4 features 	: | sepal length (cm) |	sepal width (cm) | petal length (cm) |	petal width (cm) | 
@@ -71,12 +78,14 @@ data = scale(iris.data) # scale the iris data
 data
 
 ````
+</p>
+</details>
 
-
-`````
 
 3. K-means algorithm
 
+<details><summary> code </summary>
+<p>
 classify the cluster already known
 
 ````
@@ -88,9 +97,13 @@ labels = kmeans.labels_
 centroids = kmeans.cluster_centers_
 
 ````
-
+</p>
+</details>
 
 4. K-means clusting plot
+
+<details><summary> code </summary>
+<p>
 
 ````
 x = pd.DataFrame(x, columns = features)
@@ -102,26 +115,11 @@ plt.scatter(centroids[:,0], centroids[:,1], s = 300, alpha=0.5, marker = 'x', c 
 plt.xlabel('sepal length (cm)')
 plt.ylabel('sepal width (cm)');
 ```
+</p>
+</details>
+
 
 5. Evaluation results
-````
-plt.figure(figsize=(10,4))
-
-plt.subplot(1, 2, 1)
-plt.scatter(x['sepal length (cm)'], x['sepal width (cm)'], c=colormap[labels])
-plt.xlabel('sepal length (cm)')
-plt.ylabel('sepal width (cm)');
-plt.title('K-Means Clustering Classifcation (k = 3)')
- 
-plt.subplot(1, 2, 2)
-plt.scatter(x['sepal length (cm)'], x['sepal width (cm)'], c=colormap[y], s=40)
-plt.xlabel('sepal length (cm)')
-plt.ylabel('sepal width (cm)');
-plt.title('Iris Species - Before K Means Classificaion")')
-
-plt.tight_layout()
-plt.show()
-`````
 
 
 
