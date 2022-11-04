@@ -35,8 +35,7 @@ Fisher created it in 1936, containing measures of sepal length, sepal width, pet
 </p>
 </details>
 
-Task: 
-
+Task: Identify three species of Iris 
 
 
 Steps: 
@@ -114,24 +113,32 @@ plt.scatter(centroids[:,0], centroids[:,1], s = 300, alpha=0.5, marker = 'x', c 
 
 plt.xlabel('sepal length (cm)')
 plt.ylabel('sepal width (cm)');
-```
+````
 </p>
 </details>
 
-
 5. Evaluation results
 
+<details><summary> code </summary>
+<p>
 
+`````
+plt.figure(figsize=(10,4))
 
-
-
-
-
-
-
-
-
-
-
+plt.subplot(1, 2, 1)
+plt.scatter(x['sepal length (cm)'], x['sepal width (cm)'], c=colormap[labels])
+plt.xlabel('sepal length (cm)')
+plt.ylabel('sepal width (cm)');
+plt.title('K-Means Clustering Classifcation (k = 3)')
  
+plt.subplot(1, 2, 2)
+plt.scatter(x['sepal length (cm)'], x['sepal width (cm)'], c=colormap[y], s=40)
+plt.xlabel('sepal length (cm)')
+plt.ylabel('sepal width (cm)');
+plt.title('Iris Species - Before K Means Classificaion")')
 
+plt.tight_layout()
+plt.show()
+`````
+</p>
+</details>
